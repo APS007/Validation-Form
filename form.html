@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>PIXEL6 Form Validation</title>
+    <meta charset="utf-8" name="viewport" content="width-device-width,initial-scale">
+    <link rel="stylesheet" href="#">
+</head>
+
+<body>
+    <h1 style="text-align: center;">Sign In</h1>
+    <form name="myform">
+        <Label>Username</Label><br>
+        <input id="username" type="text" placeholder="Name"><br><br>
+        <Label>Email</Label><br>
+        <input id="text" type="email" placeholder="Email"><br><br>
+        <Label>Phone:</Label><br>
+        <input id="phnumber" type="phone" placeholder="Phone Number"><br><br>
+
+
+        <button onclick="formatphoneno()" type="button">Submit</button>
+    </form>
+    <script>
+        var username = document.forms["myform"]["username"];
+        function validation() {
+            if (username.value == " ") {
+                alert("Username cannot be empty...!!!")
+                return false;
+
+            }
+            
+        }
+        function emailvalidate() {
+            var mail = document.getElementById("text").value;
+            var regx = /^([a-zA-Z0-9\._-]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+
+            if (regx.test(mail)) {
+                alert("You have provided a Valid Email ID")
+                return true
+            }
+            else {
+                alert("Sorry! Incorrect Email ID")
+                return false
+            }
+        }
+        function formatphoneno(phnumber) {
+            var cleaned = ('' + phnumber).replace(/\D/g, '');
+            var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+            if (match) {
+                return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+            }
+            return null;
+        }
+    </script>
+</body>
+
+</html>
